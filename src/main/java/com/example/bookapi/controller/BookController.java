@@ -21,14 +21,12 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
-    // GET all books
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    // GET a single book by ID
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
@@ -36,7 +34,6 @@ public class BookController {
         return book.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // POST a new book
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
@@ -44,7 +41,6 @@ public class BookController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
     }
 
-    // PUT (update) a book
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
@@ -60,7 +56,6 @@ public class BookController {
         }
     }
 
-    // DELETE a book
     @Secured("ADMIN")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {

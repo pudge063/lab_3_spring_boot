@@ -22,7 +22,6 @@ public class Book {
     @Size(min = 1, max = 255, message = "Author must be between 1 and 255 characters")
     private String author;
 
-    // Constructors
     public Book() {
     }
 
@@ -31,7 +30,6 @@ public class Book {
         this.author = author;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
