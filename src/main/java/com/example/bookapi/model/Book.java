@@ -5,12 +5,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 @Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "Title cannot be null")
+    @Size(min = 1, max = 255, message = "Title must be between 1 and 255 characters")
     private String title;
+
+    @NotNull(message = "Author cannot be null")
+    @Size(min = 1, max = 255, message = "Author must be between 1 and 255 characters")
     private String author;
 
     // Constructors
