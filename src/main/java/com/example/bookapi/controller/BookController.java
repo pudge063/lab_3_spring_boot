@@ -49,6 +49,7 @@ public class BookController {
             Book bookToUpdate = optionalBook.get();
             bookToUpdate.setTitle(bookDetails.getTitle());
             bookToUpdate.setAuthor(bookDetails.getAuthor());
+            bookToUpdate.setPublishYear(bookDetails.getPublishYear());
             Book updatedBook = bookRepository.save(bookToUpdate);
             return ResponseEntity.ok(updatedBook);
         } else {

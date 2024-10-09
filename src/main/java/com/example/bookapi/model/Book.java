@@ -22,12 +22,15 @@ public class Book {
     @Size(min = 1, max = 255, message = "Author must be between 1 and 255 characters")
     private String author;
 
+    private String publishYear;
+
     public Book() {
     }
 
-    public Book(String title, String author) {
+    public Book(String title, String author, String publishYear) {
         this.title = title;
         this.author = author;
+        this.publishYear = publishYear;
     }
 
     public Long getId() {
@@ -53,4 +56,8 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+    public void setPublishYear(String publishYear) { this.publishYear = publishYear; }
+
+    public String getPublishYear() { return publishYear; }
 }
